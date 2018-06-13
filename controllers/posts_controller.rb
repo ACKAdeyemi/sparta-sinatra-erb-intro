@@ -103,7 +103,7 @@ class PostsController < Sinatra::Base # base module allows us to use HTTP verbs
     redirect '/'
   end
 
-  # delete
+  # destroy
   delete '/:id' do
     id = params[:id].to_i
 
