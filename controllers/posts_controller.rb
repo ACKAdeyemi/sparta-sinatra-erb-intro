@@ -29,7 +29,7 @@ class PostsController < Sinatra::Base # base module allows us to use HTTP verbs
   ]
 
   # root - index
-  get '/' do
+  get '/posts' do
     @title = "Posts Index" # global variable, use them sparingly
     @posts = $posts
 
@@ -37,7 +37,7 @@ class PostsController < Sinatra::Base # base module allows us to use HTTP verbs
   end
 
   # new
-  get '/new' do
+  get '/posts/new' do
     @title = "New Post" # global variable, use them sparingly
 
     @post = {
@@ -50,7 +50,7 @@ class PostsController < Sinatra::Base # base module allows us to use HTTP verbs
   end
 
   # show
-  get '/:id' do
+  get '/posts/:id' do
     id = params[:id].to_i
 
     @title = "Show Post"
@@ -60,7 +60,7 @@ class PostsController < Sinatra::Base # base module allows us to use HTTP verbs
   end
 
   # create
-  post '/' do
+  post '/posts' do
     # puts params # on submit, form data submits to URL
 
     id = $posts.last[:id] + 1
@@ -74,11 +74,11 @@ class PostsController < Sinatra::Base # base module allows us to use HTTP verbs
     puts new_post
     $posts.push new_post
 
-    redirect '/' # redirect is a get request
+    redirect '/posts' # redirect is a get request
   end
 
   # edit
-  get '/:id/edit' do
+  get '/posts/:id/edit' do
     id = params[:id].to_i
 
     @post = $posts[id]
@@ -89,7 +89,7 @@ class PostsController < Sinatra::Base # base module allows us to use HTTP verbs
   end
 
   # update
-  put '/:id' do
+  put '/posts/:id' do
 
     id = params[:id].to_i
 
@@ -100,16 +100,16 @@ class PostsController < Sinatra::Base # base module allows us to use HTTP verbs
 
     $posts[id] = post # save new data back into array
 
-    redirect '/'
+    redirect '/posts'
   end
 
   # destroy
-  delete '/:id' do
+  delete '/posts/:id' do
     id = params[:id].to_i
 
     $posts.delete_at id
 
-    redirect '/'
+    redirect '/posts'
   end
 
 end

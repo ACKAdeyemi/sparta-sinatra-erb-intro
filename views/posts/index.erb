@@ -4,10 +4,10 @@
 
 <% @posts.each do |post| %>
   <h3><%= post[:title] %></h3>
-  <a href="/<%= post[:id] %>">See more</a>
-  <a href="/<%= post[:id] %>/edit">Edit</a>
+  <a href="/posts/<%= post[:id] %>">See more</a>
+  <a href="/posts/<%= post[:id] %>/edit">Edit</a>
 
-  <form action="/<%= post[:id] %>" method="post">
+  <form action="/posts/<%= post[:id] %>" method="post">
     <input type="submit" value="DELETE">
     <input type="hidden" name="_method" value="DELETE">
   </form>
