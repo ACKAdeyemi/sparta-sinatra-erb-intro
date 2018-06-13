@@ -26,14 +26,24 @@ class PostsController < Sinatra::Base # base module allows us to use HTTP verbs
       :title => "Post 3",
       :body => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
-  ] # global variable, use them sparingly
+  ]
 
   # root
-  get '/' do
+  get '/posts' do
 
-    @title = "Posts Index"
+    @title = "Posts Index" # global variable, use them sparingly
 
     erb :'posts/index'
+  end
+
+  get '/posts/:id' do
+
+    id = params[:id].to_i
+
+    @title = "Show Post"
+    @post = $posts[id]
+
+    erb :'posts/show'
   end
 
 end
