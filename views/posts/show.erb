@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title><%= @title %></title>
-  </head>
-  <body>
-
-    <!-- below shows data in raw form, great for testing -->
-    <!-- <%= @post %> -->
-
-    <h1><%= @post[:title] %></h1>
-    <p><%= @post[:body] %></p>
-
-  </body>
-</html>
+<!-- below shows data in raw form, great for testing -->
+<!-- <%= @post %> -->
+<h1><%= @post[:title] %></h1>
+<p><%= @post[:body] %></p>
+<a href="/<%= @post[:id] %>/edit">Edit</a>

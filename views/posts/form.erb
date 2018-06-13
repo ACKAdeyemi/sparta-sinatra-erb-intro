@@ -1,0 +1,20 @@
+<form action="/<%= @post[:id] %>" method="POST">
+
+  <div>
+    <label>Post Title</label>
+    <input type="text" name="title" value="<%= @post[:title] %>">
+  </div>
+
+  <div>
+    <label>Post Description</label>
+    <textarea name="body" rows="8" cols="20"><%= @post[:body] %></textarea>
+  </div>
+
+  <input type="submit" value="submit">
+
+  <!-- checks for id on new and edit pages - if doesn't exist then create, if exists then update -->
+  <% if (@post[:id] != '') %>
+    <input type="hidden" name="_method" value="PUT"> <!-- works together with method override (in config) to make PUT request -->
+  <% end %>
+
+</form>
